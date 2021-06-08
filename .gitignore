@@ -1,4 +1,5 @@
 .idea
+token_app/django_qiyu_token
 poetry.lock
 
 # Byte-compiled / optimized / DLL files
