@@ -13,6 +13,9 @@ python = "^3.9"
 
 django = ">=3.2,<3.3"
 
+# for API
+django-ninja = ">=0.13,<0.14"
+
 [tool.poetry.dev-dependencies]
 black = "*"
 pytest = "*"
