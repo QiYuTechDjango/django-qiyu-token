@@ -1,2 +1,5 @@
-# django-qiyu-token
-QiYuTech Token Mangement
+# Django Token Management
+
+## 当前支持:
+
+* Bearer 令牌
