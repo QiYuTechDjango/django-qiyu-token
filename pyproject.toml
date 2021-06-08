@@ -1,8 +1,9 @@
 [tool.poetry]
 name = "django-qiyu-token"
-version = "0.1.0"
-description = ""
+version = "0.1.1"
+description = "Django Token Management APP"
 authors = ["dev <dev@qiyutech.tech>"]
+readme = "README.md"
 
 [tool.poetry.dependencies]
 python = "^3.9"
