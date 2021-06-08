@@ -11,6 +11,8 @@ django = ">=3.2,<3.3"
 
 [tool.poetry.dev-dependencies]
 black = "*"
+pytest = "*"
+pytest-django = "*"
 pylama = "*"
 
 [build-system]
