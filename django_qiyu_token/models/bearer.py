@@ -23,7 +23,6 @@ class BearerTokenModel(models.Model):
         User,
         on_delete=models.CASCADE,
         db_index=True,
-        editable=False,
         verbose_name="用户",
         help_text="拥有这个令牌的用户",
     )
