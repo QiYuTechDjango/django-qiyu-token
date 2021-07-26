@@ -5,7 +5,8 @@ test:
 
 
 clean-test:
-	ln -s django_qiyu_token token_app/django_qiyu_token
+	rm token_app/django_qiyu_token || true
+	cd token_app && ln -s ../django_qiyu_token django_qiyu_token
 	cd token_app && poetry run python manage.py migrate
 	make test
 
