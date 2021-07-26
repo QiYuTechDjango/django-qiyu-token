@@ -2,7 +2,7 @@ import jwt
 from django.db import models
 from django.utils import timezone
 
-from jwt_app import JwtAppModel
+from .jwt_app import JwtAppModel
 
 __all__ = ["JwtTokenModel"]
 

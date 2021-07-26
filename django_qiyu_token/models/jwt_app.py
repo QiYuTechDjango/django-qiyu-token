@@ -14,8 +14,8 @@ class JwtAppModel(models.Model):
     """Json Web Token 密钥存储模块"""
 
     class Meta(object):
-        verbose_name = "JWT密钥"
-        verbose_name_plural = "JWT密钥"
+        verbose_name = "JWT应用"
+        verbose_name_plural = "JWT应用"
 
     app_name = models.CharField(
         unique=True, max_length=255, verbose_name="密钥名称", help_text="方便人类记忆的名称"
