@@ -22,15 +22,16 @@ class BearerTokenAuth(HttpBearer):
 
 
 class JwtTokenAuth(HttpBearer):
-
     def __init__(self, jwt_app: JwtAppModel):
         super().__init__()
         self._jwt_app = jwt_app
 
     def authenticate(self, request: HttpRequest, token: str) -> Optional[str]:
         try:
-            payload = jwt.decode(token, self._jwt_app.app_key, algorithms=self._jwt_app.app_type)
-            return payload['sub']
+            payload = jwt.decode(
+                token, self._jwt_app.app_key, algorithms=self._jwt_app.app_type
+            )
+            return payload["sub"]
         except Exception as e:
-            logging.info(f'jwt: {token=} auth failed: {e=}')
+            logging.info(f"jwt: {token=} auth failed: {e=}")
             return None
