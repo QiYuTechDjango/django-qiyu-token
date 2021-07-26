@@ -9,7 +9,7 @@ from ninja.security import HttpBearer
 
 from .models import BearerTokenModel, JwtAppModel
 
-__all__ = ["BearerTokenAuth"]
+__all__ = ["BearerTokenAuth", "JwtTokenAuth"]
 
 
 class BearerTokenAuth(HttpBearer):
@@ -22,13 +22,18 @@ class BearerTokenAuth(HttpBearer):
 
 
 class JwtTokenAuth(HttpBearer):
-    def __init__(self, jwt_app: JwtAppModel, audience: List[str]):
+    def __init__(self, jwt_name: str, audience: List[str]):
         super().__init__()
-        self._jwt_app = jwt_app
+        self._jwt_name = jwt_name
+        self._jwt_app: Optional[JwtAppModel] = None
         self._audience = audience
 
     def authenticate(self, request: HttpRequest, token: str) -> Optional[str]:
         try:
+            if self._jwt_app is None:
+                # cache the result
+                self._jwt_app = JwtAppModel.objects.get(app_name=self._jwt_name)
+
             payload = jwt.decode(
                 token,
                 self._jwt_app.app_key,
