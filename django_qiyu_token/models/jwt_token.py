@@ -1,3 +1,4 @@
+import jwt
 from django.db import models
 from django.utils import timezone
 
@@ -40,3 +41,17 @@ class JwtTokenModel(models.Model):
 
     def __str__(self) -> str:
         return f"{self.jwt_sub}({self.jwt_app})"
+
+    @property
+    def jwt_token(self) -> str:
+        return jwt.encode(
+            {
+                "iss": self.jwt_app.jwt_iss,
+                "sub": self.jwt_sub,
+                "aud": self.jwt_aud,
+                "exp": self.jwt_exp,
+                "nbf": self.jwt_nbf,
+            },
+            self.jwt_app.app_key,
+            algorithm=self.jwt_app.app_type,
+        )
