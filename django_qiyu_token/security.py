@@ -1,5 +1,5 @@
 import logging
-from typing import Optional
+from typing import Optional, List
 
 import jwt
 from django.contrib.auth.models import User
@@ -22,14 +22,18 @@ class BearerTokenAuth(HttpBearer):
 
 
 class JwtTokenAuth(HttpBearer):
-    def __init__(self, jwt_app: JwtAppModel):
+    def __init__(self, jwt_app: JwtAppModel, audience: List[str]):
         super().__init__()
         self._jwt_app = jwt_app
+        self._audience = audience
 
     def authenticate(self, request: HttpRequest, token: str) -> Optional[str]:
         try:
             payload = jwt.decode(
-                token, self._jwt_app.app_key, algorithms=self._jwt_app.app_type
+                token,
+                self._jwt_app.app_key,
+                algorithms=self._jwt_app.app_type,
+                audience=self._audience,
             )
             return payload["sub"]
         except Exception as e:
