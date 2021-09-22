@@ -1,6 +1,4 @@
-# Django Token Management
-
-Django 令牌管理 APP
+# Django 令牌管理
 
 ## 当前支持:
 
