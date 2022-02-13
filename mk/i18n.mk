@@ -1,4 +1,4 @@
-djangoRun:=cd token_app && poetry run python manage.py
+djangoRun:=cd django_qiyu_token && poetry run django-admin
 
 # i18n 提取出翻译的字符串
 i18n-extract:
