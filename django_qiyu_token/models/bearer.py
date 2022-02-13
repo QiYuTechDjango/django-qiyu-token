@@ -4,6 +4,7 @@ from datetime import timedelta
 from django.contrib.auth.models import User
 from django.db import models
 from django.utils import timezone
+from django.utils.translation import gettext_lazy
 
 __all__ = ["BearerTokenModel"]
 
@@ -16,8 +17,8 @@ class BearerTokenModel(models.Model):
     """Bearer 令牌存储模块"""
 
     class Meta(object):
-        verbose_name = "Bearer令牌"
-        verbose_name_plural = "Bearer令牌"
+        verbose_name = gettext_lazy("Bearer令牌")
+        verbose_name_plural = gettext_lazy("Bearer令牌")
 
     user = models.ForeignKey(
         User,
