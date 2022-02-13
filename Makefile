@@ -1,4 +1,5 @@
-
+# i18n
+include mk/i18n.mk
 
 test:
 	cd token_app && poetry run pytest
