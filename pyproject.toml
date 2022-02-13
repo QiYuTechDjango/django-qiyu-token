@@ -14,7 +14,7 @@ python = "^3.9"
 django = ">=3.2,<3.3"
 
 # for API
-django-ninja = ">=0.15,<0.17"
+django-ninja = ">=0.16,<0.18"
 
 # Json Web Token
 pyjwt = { version = ">=2.1,<3.0", extras = ["crypto"] }
